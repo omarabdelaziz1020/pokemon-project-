@@ -2,6 +2,11 @@
 
 A modern, responsive Pokemon browser built with React, TypeScript, and cutting-edge web technologies. Features two distinct browsing experiences, multiple Pokemon-themed color schemes, and comprehensive Pokemon information display.
 
+## 🔗 Links
+
+- **🚀 Live Demo**: [https://pokemon-project-one-psi.vercel.app/](https://pokemon-project-one-psi.vercel.app/)
+- **📂 GitHub Repository**: [https://github.com/omarabdelaziz1020/pokemon-project-](https://github.com/omarabdelaziz1020/pokemon-project-)
+
 ## 🚀 Features
 
 ### 📋 Dual Browsing Modes
@@ -157,7 +162,7 @@ const prefetchPokemonDetails = usePrefetchPokemonDetails();
 
 ```bash
 # Clone the repository
-git clone <repository-url>
+git clone https://github.com/omarabdelaziz1020/pokemon-project-.git
 cd pokemon-project
 
 # Install dependencies
@@ -178,7 +183,7 @@ npm run lint     # Run ESLint code analysis
 
 ### Development Notes
 
-- The project uses **Vite 5.4.19** 
+- The project uses **Vite 5.4.19**
 - **React Router 6.26.2**
 - **ES module configuration** for modern JavaScript features
 
@@ -246,6 +251,10 @@ Comprehensive error handling throughout the application:
 ## 🌐 Deployment
 
 The project is configured for easy deployment on modern platforms:
+
+### Current Deployment
+
+The project is currently deployed on Vercel and accessible at [https://pokemon-project-one-psi.vercel.app/](https://pokemon-project-one-psi.vercel.app/). Vercel provides seamless integration with GitHub repositories, automatic preview deployments for pull requests, and optimized performance for React applications.
 
 ### Recommended Platforms
 
