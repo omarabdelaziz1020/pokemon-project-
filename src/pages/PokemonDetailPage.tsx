@@ -10,10 +10,12 @@ import {
   Tag,
   Divider,
 } from "antd";
-import { ArrowLeftOutlined, TrophyOutlined } from "@ant-design/icons";
+import { ArrowLeftOutlined, TrophyOutlined, ThunderboltOutlined } from "@ant-design/icons";
 import { usePokemonDetails } from "../hooks/usePokemon";
 import { useTheme } from "../hooks/useTheme";
+import { useDocumentTitle } from "../hooks/useDocumentTitle";
 import { ErrorDisplay } from "../components/ErrorDisplay";
+import { StatsDisplay } from "../components/StatsDisplay";
 
 const { Title, Text } = Typography;
 
@@ -22,6 +24,11 @@ export const PokemonDetailPage: React.FC = () => {
   const navigate = useNavigate();
   const { currentTheme } = useTheme();
   const { data: pokemon, isLoading, error, refetch } = usePokemonDetails(id!);
+  
+  // Update document title with Pokemon name
+  useDocumentTitle(
+    pokemon ? `${pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)} #${pokemon.id}` : 'Loading...'
+  );
 
   if (error) {
     return (
@@ -228,6 +235,43 @@ export const PokemonDetailPage: React.FC = () => {
 
               <Divider />
 
+              {/* Abilities */}
+              <div>
+                <Text
+                  strong
+                  style={{ color: currentTheme.colors.text }}
+                  className="block mb-3"
+                >
+                  <ThunderboltOutlined className="mr-2" />
+                  Abilities
+                </Text>
+                <div className="space-y-2">
+                  {pokemon.abilities.map((abilityData) => (
+                    <div
+                      key={abilityData.ability.name}
+                      className="p-3 rounded-lg bg-gray-50"
+                    >
+                      <div className="flex items-center justify-between">
+                        <Text
+                          strong
+                          style={{ color: currentTheme.colors.text }}
+                          className="capitalize"
+                        >
+                          {abilityData.ability.name.replace("-", " ")}
+                        </Text>
+                        {abilityData.is_hidden && (
+                          <Tag color="gold" className="text-xs">
+                            Hidden
+                          </Tag>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <Divider />
+
               {/* Additional Info */}
               <div
                 className="p-4 rounded-lg"
@@ -260,6 +304,22 @@ export const PokemonDetailPage: React.FC = () => {
                 </div>
               </div>
             </div>
+          </Card>
+        </Col>
+      </Row>
+
+      {/* Base Stats Section - Full Width */}
+      <Row gutter={[24, 24]}>
+        <Col xs={24}>
+          <Card>
+            <Title
+              level={3}
+              style={{ color: currentTheme.colors.text }}
+              className="!mb-6"
+            >
+              Base Stats
+            </Title>
+            <StatsDisplay stats={pokemon.stats} />
           </Card>
         </Col>
       </Row>

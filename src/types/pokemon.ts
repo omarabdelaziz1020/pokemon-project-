@@ -32,6 +32,24 @@ export interface PokemonSprites {
     };
 }
 
+export interface PokemonAbility {
+    ability: {
+        name: string;
+        url: string;
+    };
+    is_hidden: boolean;
+    slot: number;
+}
+
+export interface PokemonStat {
+    base_stat: number;
+    effort: number;
+    stat: {
+        name: string;
+        url: string;
+    };
+}
+
 export interface PokemonDetails {
     id: number;
     name: string;
@@ -40,6 +58,8 @@ export interface PokemonDetails {
     types: PokemonType[];
     sprites: PokemonSprites;
     base_experience: number;
+    abilities: PokemonAbility[];
+    stats: PokemonStat[];
 }
 
 export interface PaginationInfo {

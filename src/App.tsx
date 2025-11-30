@@ -1,6 +1,9 @@
+import { Suspense } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { AppContent } from "./components/AppContent";
+import { ErrorBoundary } from "./components/ErrorBoundary";
+import { Spin } from "antd";
 
 // Create a client for React Query
 const queryClient = new QueryClient({
@@ -16,11 +19,21 @@ const queryClient = new QueryClient({
 
 function App() {
   return (
-    <QueryClientProvider client={queryClient}>
-      <ThemeProvider>
-        <AppContent />
-      </ThemeProvider>
-    </QueryClientProvider>
+    <ErrorBoundary>
+      <QueryClientProvider client={queryClient}>
+        <ThemeProvider>
+          <Suspense
+            fallback={
+              <div className="flex items-center justify-center min-h-screen">
+                <Spin size="large" />
+              </div>
+            }
+          >
+            <AppContent />
+          </Suspense>
+        </ThemeProvider>
+      </QueryClientProvider>
+    </ErrorBoundary>
   );
 }
 

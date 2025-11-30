@@ -56,3 +56,20 @@ body {
 .skeleton {
   @apply animate-pulse bg-gray-200 rounded;
 }
+
+/* Override Ant Design Header padding for responsive design */
+.custom-header-padding {
+  padding: 12px !important;
+}
+
+@media (min-width: 640px) {
+  .custom-header-padding {
+    padding: 0 24px !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .custom-header-padding {
+    padding: 0 32px !important;
+  }
+}
