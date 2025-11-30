@@ -25,11 +25,17 @@ export const PokemonCard: React.FC<PokemonCardProps> = ({
   };
 
   return (
-    <Link to={`/pokemon/${pokemonId}`} className="block">
+    <Link 
+      to={`/pokemon/${pokemonId}`} 
+      className="block"
+      aria-label={`View details for ${pokemon.name} #${pokemonNumber}`}
+    >
       <Card
         className="pokemon-card h-full transform transition-all duration-300 hover:scale-105"
         style={{ borderColor: currentTheme.colors.primary }}
         onMouseEnter={handleMouseEnter}
+        role="article"
+        aria-label={`Pokemon card for ${pokemon.name}`}
         cover={
           <div
             className="flex justify-center items-center h-48 p-4"
@@ -39,7 +45,7 @@ export const PokemonCard: React.FC<PokemonCardProps> = ({
           >
             <img
               src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemonId}.png`}
-              alt={pokemon.name}
+              alt={`${pokemon.name} official artwork`}
               className="max-h-full max-w-full object-contain drop-shadow-lg"
               loading="lazy"
             />
@@ -51,6 +57,7 @@ export const PokemonCard: React.FC<PokemonCardProps> = ({
           <Text
             style={{ color: currentTheme.colors.secondary }}
             className="text-sm font-medium"
+            aria-label={`Pokemon number ${pokemonNumber}`}
           >
             #{pokemonNumber}
           </Text>

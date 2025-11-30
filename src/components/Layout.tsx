@@ -17,13 +17,13 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <AntLayout className="min-h-screen">
       <Header
-        className="shadow-lg border-b-4"
+        className="shadow-lg border-b-4 custom-header-padding"
         style={{
           backgroundColor: currentTheme.colors.primary,
           borderBottomColor: currentTheme.colors.primaryDark,
         }}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-full">
             <Link
               to="/"
